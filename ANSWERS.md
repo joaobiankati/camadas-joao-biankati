@@ -1,6 +1,6 @@
 # Respostas
 
-Nome:
+Nome: João Biankati
 
 Como responder: nas questões objetivas, escreva a letra depois de **Resposta:**. A justificativa é opcional, mas ajuda na correção. Nas discursivas, escreva seu texto logo abaixo do enunciado.
 
@@ -37,9 +37,9 @@ C) A asserção I é uma proposição verdadeira, e a II é uma proposição fal
 D) A asserção I é uma proposição falsa, e a II é uma proposição verdadeira.
 E) As asserções I e II são proposições falsas.
 
-**Resposta:**
+**Resposta:** A
 
-**Justificativa (opcional):**
+**Justificativa (opcional):** I e II são verdadeiras: o controller recebe o service por injeção de dependência, o que permite trocar a implementação (ex.: service falso em testes).
 
 ---
 
@@ -66,9 +66,9 @@ C) `const company = db.prepare('SELECT * FROM companies WHERE id = ' + companyId
 D) `res.send(\`<h1>${name} created</h1>\`)`
 E) `const net = gross - gross * 0.11`
 
-**Resposta:**
+**Resposta:** E
 
-**Justificativa (opcional):**
+**Justificativa (opcional):** O cálculo do INSS (`net = gross - gross * 0.11`) é regra de negócio e pertence ao Service. As outras linhas vão para Controller, DTO, Repository ou View.
 
 ---
 
@@ -94,9 +94,9 @@ C) II e IV, apenas.
 D) I, II e IV, apenas.
 E) I, II, III e IV.
 
-**Resposta:**
+**Resposta:** D
 
-**Justificativa (opcional):**
+**Justificativa (opcional):** I, II e IV corretas. III é falsa: formato fica no DTO e regra de negócio no Service, não no Repository.
 
 ---
 
