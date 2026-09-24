@@ -128,9 +128,9 @@ C) II, apenas.
 D) II e III, apenas.
 E) I, II e III.
 
-**Resposta:**
+**Resposta:** B
 
-**Justificativa (opcional):**
+**Justificativa (opcional):** I e II corretas. III é falsa: o service não monta JSON; o app mobile reutiliza a API já respondida pelo controller.
 
 ---
 
@@ -152,9 +152,9 @@ C) A asserção I é uma proposição verdadeira, e a II é uma proposição fal
 D) A asserção I é uma proposição falsa, e a II é uma proposição verdadeira.
 E) As asserções I e II são proposições falsas.
 
-**Resposta:**
+**Resposta:** C
 
-**Justificativa (opcional):**
+**Justificativa (opcional):** I é verdadeira: em `legacy/app.ts` a rota mistura HTTP, SQL, INSS e HTML. II é falsa: o TypeScript não isola essa rota das outras partes.
 
 ---
 
@@ -172,6 +172,13 @@ c) cite os arquivos do seu projeto que seriam alterados para atendê-lo.
 
 **Resposta:**
 
+O pedido que exige mais esforço é o (b), alíquota de INSS por estado.
+CSV e app mobile reaproveitam o service; a regra de cálculo é que muda.
+As camadas só indicam o lugar da mudança, não eliminam o trabalho da regra.
+Arquivo principal: `src/services/employee.service.ts`, constante `INSS = 0.11` e o cálculo de `net`.
+O `state` já vem de `src/repositories/company.repository.ts` (`findById`) e de `src/types.ts` (`Company.state`).
+`src/controllers/employee.controller.ts` não precisa mudar.
+
 ---
 
 ### Questão 7 (discursiva)
@@ -187,3 +194,7 @@ c) descreva como você corrigiu, ou como corrigiria.
 (Até 10 linhas.)
 
 **Resposta:**
+
+O erro mais próximo foi tratar o status em cada rota, como em `legacy/app.ts` (`res.status(400)`, `404` e `422` no `POST /employees`).
+Em `src/controllers/employee.controller.ts` e `src/controllers/company.controller.ts` o catch só chama `next(error)`.
+A tradução ficou só em `src/middlewares/error.middleware.ts`: `InvalidInput` 400, `NotFound` 404, `RuleViolation` 422.
