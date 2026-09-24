@@ -4,7 +4,17 @@ import { CompanyRepository } from '../repositories/company.repository'
 import { EmployeeRepository } from '../repositories/employee.repository'
 
 const MINIMUM_WAGE = 1518
-const INSS = 0.11
+const DEFAULT_INSS = 0.11
+
+const INSS_BY_STATE: Record<string, number> = {
+  SP: 0.11,
+  MG: 0.09,
+  RJ: 0.08
+}
+
+function inssRate(state: string): number {
+  return INSS_BY_STATE[state.toUpperCase()] ?? DEFAULT_INSS
+}
 
 export class EmployeeService {
   constructor(
@@ -21,7 +31,7 @@ export class EmployeeService {
       throw new RuleViolation('salary below minimum wage')
     }
 
-    const net = gross - gross * INSS
+    const net = gross - gross * inssRate(company.state)
 
     return this.employees.save({
       name: data.name,
